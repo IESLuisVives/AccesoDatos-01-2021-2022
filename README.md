@@ -6,7 +6,7 @@ Tema 01 Streams y Ficheros. Curso 2021/2022.
 
 ## Contenidos
 1. Streams y Ficheros
-2. Api Streams
+2. API Stream
 
 
 ## Recursos
