@@ -1,46 +1,45 @@
 package es.joseluisgs.dam.utils;
 
+import es.joseluisgs.dam.model.Product;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
-/**
- * Creado por  Ascari Q. Romo Pedraza - molder.itp@gmail.com on 17/04/17.
- * Este es solo el codigo base usado en el workshop "Conociendo al API Stream de Java 8"
- * que puedes encontrar en mi blog
- * https://windoctor7.github.io/API-Stream-Java8.html
- *
- * Ahi se encuentran toda una serie de ejercicios y explicaciones.
- * Este codigo es solo la base, no contiene los ejercicios descritos en el blog.
- */
 public class Util {
 
-    public static List<Product> getProducts(){
+    public static List<Product> getProducts() {
         // Cargamos el archivo ubicado en la carpeta resources.
-        ClassLoader classLoader = Util.class.getClassLoader();
-        Scanner sc = new Scanner(classLoader.getResourceAsStream("products.csv"));
-
-        sc.nextLine(); // comenzamos a leer a partir de la segunda linea (la primera tiene solo los titulos)
-        sc.useDelimiter(","); // separamos por comas para obtener las columnas
-
-        List<Product>  products = new ArrayList<>();
-
-        while(sc.hasNextLine()){
-            //con los metodos nextXX() obtenemos las columnas en el orden en el que se encuentran en el archivo
-            Product product = new Product();
-            product.setId(sc.nextInt());
-            product.setName(sc.next());
-            product.setSupplier(sc.nextInt());
-            product.setCategory(sc.nextInt());
-            sc.next(); //saltamos la columna quantityPerUnit
-            product.setUnitPrice(sc.nextDouble());
-            product.setUnitsInStock(sc.nextInt());
-
-            products.add(product); // agregamos el producto a la lista.
-
-            sc.nextLine(); // pasamos a la siguiente linea
+        Path path = Paths.get("data/products.csv");
+        try {
+            final List<String> lines = Files.readAllLines(Paths.get("data/products.csv"), StandardCharsets.UTF_8);
+            // lines.forEach(System.out::println);
+            List<Product>  products = new ArrayList<>();
+            for(int i=1; i<lines.size(); i++) {
+                // System.out.println("Proceso la linea: " + (i-1));
+                StringTokenizer tokenizer = new StringTokenizer(lines.get(i) , ",");
+                Product product = new Product();
+                product.setId(Integer.parseInt(tokenizer.nextToken()));
+                product.setName(tokenizer.nextToken());
+                product.setSupplier(Integer.parseInt(tokenizer.nextToken()));
+                product.setCategory(Integer.parseInt(tokenizer.nextToken()));
+                tokenizer.nextToken(); //saltamos la columna quantityPerUnit
+                product.setUnitPrice(Double.parseDouble(tokenizer.nextToken()));
+                product.setUnitsInStock(Integer.parseInt(tokenizer.nextToken()));
+                // System.out.println(product.toString());
+                products.add(product);
+            }
+            // products.forEach(System.out::println);
+            return products;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
         }
-
-        return products;
     }
 }

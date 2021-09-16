@@ -1,14 +1,5 @@
-package windoctor7.github.io.streams;
+package es.joseluisgs.dam.model;
 
-/**
- * Creado por  Ascari Q. Romo Pedraza - molder.itp@gmail.com on 17/04/17.
- * Este es solo el codigo base usado en el workshop "Conociendo al API Stream de Java 8"
- * que puedes encontrar en mi blog
- * https://windoctor7.github.io/API-Stream-Java8.html
- *
- * Ahi se encuentran toda una serie de ejercicios y explicaciones.
- * Este codigo es solo la base, no contiene los ejercicios descritos en el blog.
- */
 public class Product implements Comparable<Product>{
     private int id;
     private String name;
