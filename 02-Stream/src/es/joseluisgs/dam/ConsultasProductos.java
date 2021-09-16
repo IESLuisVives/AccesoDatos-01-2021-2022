@@ -13,8 +13,8 @@ public class ConsultasProductos {
     public ConsultasProductos() {
         // Cargamos la lista de productos
         try {
-             products = Util.getProducts();
-             procesarStreams();
+            products = Util.getProducts();
+            procesarStreams();
         } catch (Exception e) {
             System.err.println("Error al leer el fichero de productos: " + e.getMessage());
         }
@@ -167,7 +167,7 @@ public class ConsultasProductos {
                         )
                 );
 
-        c1.forEach((s, c) -> System.out.printf("proveedor: %s: productos: %s \n", s,c));
+        c1.forEach((s, c) -> System.out.printf("proveedor: %s: productos: %s \n", s, c));
         System.out.println();
 
 //        Dado que en el método collect especificamos funciones de agregado, casi siempre nos auxiliaremos de la clase Collectors
@@ -195,7 +195,7 @@ public class ConsultasProductos {
                         )
                 );
 
-        collect.forEach((stock, suma) -> System.out.printf("en stock: %s: suma: %s \n", stock,suma));
+        collect.forEach((stock, suma) -> System.out.printf("en stock: %s: suma: %s \n", stock, suma));
         System.out.println();
     }
 
@@ -216,7 +216,7 @@ public class ConsultasProductos {
                 .filter(p -> p.getValue() > 100) //filtramos (simula el having)
                 .collect(Collectors.toList());
 
-        entryList.forEach(list -> System.out.printf("en stock: %s, suma: %s\n",list.getKey(), list.getValue()));
+        entryList.forEach(list -> System.out.printf("en stock: %s, suma: %s\n", list.getKey(), list.getValue()));
         System.out.println();
     }
 

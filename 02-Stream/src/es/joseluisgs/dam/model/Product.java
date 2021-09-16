@@ -1,6 +1,6 @@
 package es.joseluisgs.dam.model;
 
-public class Product implements Comparable<Product>{
+public class Product implements Comparable<Product> {
     private int id;
     private String name;
     private int supplier;
@@ -71,9 +71,9 @@ public class Product implements Comparable<Product>{
 
     @Override
     public int compareTo(Product p) {
-        if(this.getUnitsInStock() < p.getUnitsInStock())
+        if (this.getUnitsInStock() < p.getUnitsInStock())
             return -1;
-        else if(this.getUnitsInStock() > p.getUnitsInStock())
+        else if (this.getUnitsInStock() > p.getUnitsInStock())
             return 1;
         else
             return 0;
