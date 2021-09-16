@@ -12,15 +12,15 @@ public class ConsultasCanciones {
         // Cargamos la lista de productos
         canciones = new ArrayList<>(
                 Arrays.asList(
-                        new Cancion("Te Equivocas", "Jon Carlo"),
-                        new Cancion("Solo tu", "Orlando Elizalde"),
-                        new Cancion("La Mano de Dios", "Jon Carlo"),
-                        new Cancion("Como una hoja de papel", "Evelyn Vasquez"),
-                        new Cancion("Siempre te amare", "Darwin Lechler"),
-                        new Cancion("Brilla", "Darwin Lechler"),
-                        new Cancion("Sin amor", "Carlos & Carito"),
-                        new Cancion("Te amare", "Joan Sanchez"),
-                        new Cancion("Cuanto me ama", "Orlando Elizalde")
+                        new Cancion("Livin' on Prayer", "Bon Jovi"),
+                        new Cancion("Long Hot Summer", "Keith Urban"),
+                        new Cancion("It's my Life", "Bon Jovi"),
+                        new Cancion("Dolor Fantasma", "Amadeus"),
+                        new Cancion("Run To You", "Bryan Adams"),
+                        new Cancion("Summer of 69", "Bryna Adams"),
+                        new Cancion("Paranoid", "Black Sabbath"),
+                        new Cancion("Cherokee", "Europe"),
+                        new Cancion("River Bank", "Brad Paisley")
                 )
         );
         procesarStreams();
@@ -46,19 +46,19 @@ public class ConsultasCanciones {
 
     private void filtradoDatos() {
         // Filtrando elementos forma tradicional
-        for (Cancion cancion : filtrarCantante(canciones, "Jon Carlo")) {
+        for (Cancion cancion : filtrarCantante(canciones, "Bon Jovi")) {
             System.out.println("Tradicional: " + cancion);
         }
     }
 
     private void filtradoStream() {
         // Filtrando elementos con Stream
-        List<Cancion> listadoCanciones = filtrarCantanteStream(canciones, "Jon Carlo");
+        List<Cancion> listadoCanciones = filtrarCantanteStream(canciones, "Bon Jovi");
         listadoCanciones.forEach(c -> System.out.println("Stream: " + c));
     }
 
     private void cancionesPorCantante() {
-        List<String> listadoTitulos = obtenerCancionesPorCantante(canciones, "Jon Carlo");
+        List<String> listadoTitulos = obtenerCancionesPorCantante(canciones, "Bon Jovi");
     }
 
 
@@ -74,7 +74,7 @@ public class ConsultasCanciones {
     private void realizandoTranformacion() {
         List<Cancion> listadoCanciones;
 
-        listadoCanciones = filtrarCantanteMayuscula(canciones, "Jon Carlo");
+        listadoCanciones = filtrarCantanteMayuscula(canciones, "Bon Jovi");
         listadoCanciones.forEach(c -> System.out.println("Stream Map: " + c));
     }
 
@@ -104,7 +104,7 @@ public class ConsultasCanciones {
 
     private void quitandoDuplicados() {
         //Esta canción ya existe pero la agregaremos nuevamente
-        canciones.add(new Cancion("Siempre te amare", "Darwin Lechler"));
+        canciones.add(new Cancion("Summer of 69", "Bryan Adams"));
         // aplicamos el distinct
         canciones.stream().distinct().collect(Collectors.toList()).forEach(System.out::println);
     }
@@ -112,9 +112,9 @@ public class ConsultasCanciones {
     private void contandoElementos() {
         // Contando elementos
         long count = canciones.stream()
-                .filter(c -> c.getCantante().equalsIgnoreCase("Jon Carlo"))
+                .filter(c -> c.getCantante().equalsIgnoreCase("Bon Jovi"))
                 .count();
-        System.out.println("Jon Carlo aparece: " + count + " veces");
+        System.out.println("Bon Jovi aparece: " + count + " veces");
     }
 
     private void agrupandoPorCantante() {
