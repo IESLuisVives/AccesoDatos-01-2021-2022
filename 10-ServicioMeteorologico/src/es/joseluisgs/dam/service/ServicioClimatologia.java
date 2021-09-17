@@ -1,5 +1,9 @@
 package es.joseluisgs.dam.service;
 
+import es.joseluisgs.dam.model.RegistroDatos;
+import es.joseluisgs.dam.model.TemperaturaHora;
+import es.joseluisgs.dam.util.Temperatura;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -8,9 +12,6 @@ import java.util.function.Function;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import model.RegistroDatos;
-import model.TemperaturaHora;
-import util.Temperatura;
 
 public class ServicioClimatologia {
 
@@ -21,14 +22,14 @@ public class ServicioClimatologia {
 	}
 
 	/*
-	 * M�todo que devuelve las temperaturas m�ximas agrupadas por provincia
+	 * M�todo que devuelve las temperaturas máximas agrupadas por provincia
 	 */
 	public Map<String, Optional<TemperaturaHora>> temperaturaMaximaProvincias() {
 		return temperaturaMaxOMinProvincias(Temperatura.MAXIMA);
 	}
 
 	/*
-	 * M�todo que devuelve las temperaturas m�nimas agrupadas por provincia
+	 * Método que devuelve las temperaturas mínimas agrupadas por provincia
 	 */
 
 	public Map<String, Optional<TemperaturaHora>> temperaturaMinimaProvincias() {
@@ -36,8 +37,8 @@ public class ServicioClimatologia {
 	}
 
 	/*
-	 * M�todo auxiliar, que utilizan las dos anteriores, que sirva para realizar
-	 * el agrupamiento, seg�n si es escoge m�ximo o m�nimo.
+	 * Método auxiliar, que utilizan las dos anteriores, que sirva para realizar
+	 * el agrupamiento, según si es escoge máximo o mínimo.
 	 */
 	private Map<String, Optional<TemperaturaHora>> temperaturaMaxOMinProvincias(Temperatura tipo) {
 		// Utilizamos el operador ternario para construir el collector.
@@ -51,7 +52,7 @@ public class ServicioClimatologia {
 	}
 
 	/*
-	 * M�todo que calcula las temperaturas medias agrupadas por provincia
+	 * Método que calcula las temperaturas medias agrupadas por provincia
 	 */
 	public Map<String, Double> temperaturaMediaProvincias() {
 
@@ -67,7 +68,7 @@ public class ServicioClimatologia {
 	}
 
 	/*
-	 * M�todo que filtra los datos para obtener los de una provincia en particular
+	 * Método que filtra los datos para obtener los de una provincia en particular
 	 */
 	public List<RegistroDatos> datosProvincia(String provincia) {
 
@@ -85,7 +86,7 @@ public class ServicioClimatologia {
 	}
 
 	/*
-	 * M�todo que obtiene la temperatura m�nima total
+	 * Método que obtiene la temperatura mínima total
 	 */
 	public Optional<RegistroDatos> minimaTotal() {
 

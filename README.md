@@ -5,8 +5,11 @@ Tema 01 Streams y Ficheros. Curso 2021/2022.
 ![imagen](https://woobro.design/thumbnails/26/development-illustration-5de17f18abc70.png)
 
 ## Contenidos
-1. Streams y Ficheros
+1. TDA, Clases Genéricas y Colecciones
 2. API Stream
+3. Ficheros y Directorios
+4. Java NIO2
+
 
 
 ## Recursos
